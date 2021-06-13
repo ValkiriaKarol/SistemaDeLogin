@@ -53,24 +53,27 @@
                     $linha = trim($linha);
             
                     $valor = explode('|', $linha);
-            
+                    $devoParar=false;
                     for ($i = 0;$i < count($valor);$i++)
                     {
                         if ("$email$password" == "$valor[$i]" and $loginIsMd5 == true)
                         {
+                            $devoParar = true;
                             echo "<img id='logado' src='imagens/ok.webp'>";
                             break;
             
                         }
                         else if ("$email$password" != "$valor[$i]" and isset($_POST['enviar']))
-                        {
-                            echo "<div id='desLogado'></div>";
+                        {   
+                            $devoParar = true;
+                            echo "<p id='desLogado' style='color:red'>Ocorreu um erro, tente logar novamente</p>";
                             break;
                         }
                     }
+                    if($devoParar==true)
+                        break;
                 }
-                if ($loginIsMd5 == true)
-                {
+                if ($loginIsMd5){
                     fclose($dados); // fecha
                     
                 }
@@ -93,11 +96,17 @@
          var enviar = document.getElementById("enviar");
          var email = document.getElementById("email");
          var inputPasswordLogin = document.getElementById("senha");
-         var desLogado = document.getElementById("naoLogado");
+         
+         var desLogado = document.getElementById("desLogado");
          var logado = document.getElementById("logado");
          setTimeout(function () {
          	logado.style.display = 'none';
+         	if(desLogado!=null){
+         	    desLogado.style.color = 'red';
+         	    
+         	}
          },2000);
+         
          
          
          
