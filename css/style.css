@@ -118,6 +118,9 @@
 		width: 250px;
 		z-index: 999;
 	}
+	#desLogado{
+	    color:#f66;
+	}
 	footer {
 		background-color: #222;
 		position: fixed;
@@ -193,6 +196,9 @@
 		right: 200px;
 		width: 400px;
 		z-index: 999;
+	}
+	#desLogado{
+	    color:#f66;
 	}
 	footer {
 		background-color: #222;
